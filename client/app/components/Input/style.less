@@ -1,0 +1,26 @@
+@import '../main.less';
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: @baseShade1;
+  font-size: 14px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: @baseShade1;
+  font-size: 14px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: @baseShade1;
+  font-size: 14px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: @baseShade1;
+  font-size: 14px;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
