@@ -1,4 +1,5 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import url from '../../../host';
 
 const apolloClient = (function () {
 // eslint-disable-next-line no-process-env
@@ -7,7 +8,7 @@ const apolloClient = (function () {
   return {
     init(initialState = {}) {
       const networkInterface = createNetworkInterface({
-        uri: 'http://localhost:3001/graphql',
+        uri: url.server,
       });
       client = new ApolloClient({
         ssrMode: false,

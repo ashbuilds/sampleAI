@@ -5,19 +5,20 @@ import bodyParser from 'body-parser';
 
 import schema from './schema/typedefs';
 import config from '../config/url';
+import url from '../host';
 
 // Default port from client
 const DEFAULT_PORT = config.port;
-const HOST = config.host;
+// const HOST = config.host;
 
 const app = express();
 
 // Assign port to server by adding 1, localhost:3001
 app.set('port', DEFAULT_PORT + 1);
 
-// FIXES COR'S giving access to localhost:3000
+// FIXES COR'S giving access to localhost:3000,client
 const whitelist = [
-  `http://${HOST}:${DEFAULT_PORT}`,
+  url.client,
 ];
 const corsOptions = {
   origin(origin, callback) {
