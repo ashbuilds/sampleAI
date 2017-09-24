@@ -17,7 +17,7 @@ app.set('port', DEFAULT_PORT + 1);
 
 // FIXES COR'S giving access to localhost:3000
 const whitelist = [
-  `http://${HOST}:${DEFAULT_PORT}`,
+  'http://sampleai.ashishmishra.com',
 ];
 const corsOptions = {
   origin(origin, callback) {

@@ -69,7 +69,7 @@
     "start:client": "node scripts/client.js",
     "start:server:dev": "NODE_ENV=development babel-node scripts/server.js --presets env",
     "start:server:prod": "NODE_ENV=production babel-node scripts/server.js --presets env",
-    "start": "concurrently \"npm run start:client\" \"npm run start:server:prod\"",
+    "start": "concurrently \"yarn start:client\" \"npm run start:server:prod\"",
     "start:dev": "concurrently \"npm run start:client\" \"npm run start:server:dev\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
