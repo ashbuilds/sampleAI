@@ -1,4 +1,4 @@
 import * as Input from './Input';
 
-// eslint-disable-next-line import/prefer-default-export
+export { default as Loading } from './Loading';
 export { Input };
