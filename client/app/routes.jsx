@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
-import { Layout, Home, NotFound } from './containers';
+import { Layout, Home, Quiz, NotFound } from './containers';
 
 const Routes = () => (
   <Layout>
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/quiz" component={Quiz} />
       <Route path="*" component={NotFound} />
     </Switch>
   </Layout>

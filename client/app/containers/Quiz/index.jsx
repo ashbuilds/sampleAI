@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
-
 import apolloPropTypes from '../../helpers/apolloPropType';
+
 
 import { Loading } from '../../components';
 
@@ -9,22 +9,18 @@ import { Loading } from '../../components';
 import template from './template';
 
 // Events / Functions / Base query are defined here.
-class Home extends Component {
+class Quiz extends Component {
+// eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-    this.navigateToMain = this.navigateToMain.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     const { data: { home } } = nextProps;
     document.title = home ? home.title : 'Sample AI';
   }
 
-// eslint-disable-next-line class-methods-use-this
-  navigateToMain() {
-    window.location = '/quiz';
-  }
-
   render() {
+    // just sample data but from api server
     const { data: { error, loading } } = this.props;
     if (error) {
       // todo Render error template
@@ -32,19 +28,18 @@ class Home extends Component {
       console.error(error);
       return null;
     }
+    // todo Render loading template in else
     return (loading ? Loading() : template(this));
   }
 }
 
 // binding graphQL query to Home , sample home query
-const HomeQuery = gql`query Home{ home {
-  id,title,quote{
-   text,isButton
-  }
+const QuizQuery = gql`query Home{ home {
+  id,title
 }}`;
 
-Home.propTypes = {
-  data: apolloPropTypes(HomeQuery).isRequired,
+Quiz.propTypes = {
+  data: apolloPropTypes(QuizQuery).isRequired,
 };
 
-export default graphql(HomeQuery)(Home);
+export default graphql(QuizQuery)(Quiz);

@@ -9,7 +9,7 @@ const resolvers = {
 
 // Basic sample query for test
 const query = () => axios.get(`${baseApi}home`)
-    .then(result => result.data[0])
+    .then(result => result.data[Math.floor((Math.random() * result.data.length))])
     .catch(err => err);
 
 export default { query, resolvers };

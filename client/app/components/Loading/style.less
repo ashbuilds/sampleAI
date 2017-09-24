@@ -1,0 +1,31 @@
+@import '../main.less';
+
+:local {
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background: none repeat scroll 0 0 @baseColor;
+  }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    background-color: @baseText;
+    margin: 100px auto;
+    .animation(sk-rotateplane 1.2s infinite ease-in-out);
+  }
+  .keyframes(sk-rotateplane, { 0% {
+    transform: perspective(120px)
+  } 50% {
+      transform: perspective(120px) rotateY(180deg)
+    } 100% {
+        transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+      } });
+}
