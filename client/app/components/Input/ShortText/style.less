@@ -1,0 +1,75 @@
+@import '../../main.less';
+
+:local{
+  label.short_text{
+    display: inline-block;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 1px solid #000000;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+
+  label.short_text input{
+    border: none;
+    width: 100%;
+    font-weight: 300;
+    outline: none;
+    padding: 10px 0 0;
+  }
+
+  label.short_text>span{
+    display:block;
+    padding:0;
+  }
+
+  label.short_text input~span[class*=icon-] {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    width: 20px;
+    height: 18px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  label.short_text input~span[class*=icon-]>span {
+    top: -10px;
+    left: -10px;
+    position: relative;
+  }
+  label.short_text:after{
+    content: attr(data-error);
+    position: absolute;
+    bottom: -21px;
+    width: 0;
+    height: 20px;
+    background: none;
+    border-top: 1px solid @baseError;
+    line-height: 20px;
+    font-size: 14px;
+    color: fade(@baseError,20%);
+    overflow: hidden;
+
+    /*_animation_default class*/
+    //-webkit-transition: all 0.5s 0s cubic-bezier(.55, 0, .1, 1);
+    //transition: all 0.5s 0s cubic-bezier(.55, 0, .1, 1);
+    //-o-transition: all 0.5s 0s cubic-bezier(.55, 0, .1, 1);
+
+    .transition(all 0.5s 0s cubic-bezier(.55, 0, .1, 1));
+  }
+
+  label.short_text.error{
+    -webkit-animation: shake .5s linear;
+    animation: shake .5s linear;
+  }
+  label.short_text.error:after{
+    width:100%;
+  }
+
+  label.short_text input~span[class*=icon-]:before {
+    position: absolute;
+    margin-left: -10px;
+    margin-top: -10px;
+  }
+}
