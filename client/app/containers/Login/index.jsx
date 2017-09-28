@@ -61,6 +61,7 @@ class Login extends Component {
     });
   }
   handleSubmit() {
+
     const { name } = this.state;
     const savedUser = this.getSavedUser();
 
@@ -84,6 +85,7 @@ class Login extends Component {
     } else {
       this.saveUser();
     }
+
   }
   handleChange(event) {
     event.preventDefault();
