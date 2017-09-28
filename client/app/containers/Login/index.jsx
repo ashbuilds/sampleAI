@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
 import PropTypes from 'prop-types';
 
+import user from '../../helpers/user';
 import { Loading } from '../../components';
 
 // template.jsx contain all HTML with style.
@@ -15,12 +16,18 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.saveUser = this.saveUser.bind(this);
     this.getSavedUser = this.getSavedUser.bind(this);
-    const user = JSON.parse(localStorage.getItem('#user')) || {};
     this.state = {
-      name: user.name,
-      email: user.email,
+      name: '',
+      email: '',
       loading: false,
     };
+  }
+
+  componentWillMount() {
+    const userData = user.get() || {};
+    if (userData.email) {
+      window.location = '/quiz';
+    }
   }
 
   componentDidMount() {
@@ -46,8 +53,7 @@ class Login extends Component {
       // eslint-disable-next-line no-console
       if (!status) console.error('Something went wrong!! \n Please try again');
       else {
-        const user = { name, email };
-        localStorage.setItem('#user', JSON.stringify(user));
+        user.set(name, email);
         // eslint-disable-next-line no-alert
         alert(`Welcome ${name}`);
         window.location = '/quiz';
