@@ -10,18 +10,10 @@ import template from './template';
 
 // Events / Functions / Base query are defined here.
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.navigateToMain = this.navigateToMain.bind(this);
-  }
+
   componentWillReceiveProps(nextProps) {
     const { data: { home } } = nextProps;
     document.title = home ? home.title : 'Sample AI';
-  }
-
-// eslint-disable-next-line class-methods-use-this
-  navigateToMain() {
-    window.location = '/quiz';
   }
 
   render() {

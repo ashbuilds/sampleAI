@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-
-import { Input } from '../../components';
+import { Link } from 'react-router-dom';
 
 import style from './style.less';
 
@@ -12,12 +11,9 @@ export default (that) => {
       <div className={style.button_wrapper}>
         {home.quote.map((item, i) => {
           if (item.isButton) {
-            return (<Input.Button
-              key={i}
-              title={item.text}
-              className={style.button}
-              onClick={that.navigateToMain}
-            />);
+            return (<span key={i} className={style.button}>
+              <Link to={'/login'} >{item.text}</Link>
+            </span>);
           }
           return <span key={i}>{item.text}</span>;
         })}

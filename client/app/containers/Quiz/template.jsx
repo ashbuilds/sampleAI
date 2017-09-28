@@ -2,8 +2,8 @@ import React from 'react';
 
 import style from './style.less';
 
-export default () => (
+export default that => (
   <div className={style.quiz}>
-    <span>Coming Soon...</span>
+    <span><button onClick={that.handleLogout} >Logout</button></span>
   </div>
 );
