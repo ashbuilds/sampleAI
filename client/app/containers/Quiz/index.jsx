@@ -1,45 +1,56 @@
 import { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
-import apolloPropTypes from '../../helpers/apolloPropType';
+import PropTypes from 'prop-types';
 
+import user from '../../helpers/user';
 
-import { Loading } from '../../components';
+// TODO WIP
 
 // template.jsx contain all HTML with style.
 import template from './template';
 
 // Events / Functions / Base query are defined here.
 class Quiz extends Component {
-// eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.getDimension = this.getDimension.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
-    const { data: { home } } = nextProps;
-    document.title = home ? home.title : 'Sample AI';
+
+  getDimension() {
+    this.props.getDimension({ variables: { dimensionId: 1 } });
+  }
+
+// eslint-disable-next-line class-methods-use-this
+  handleLogout() {
+    user.logout();
+    window.location = '/';
   }
 
   render() {
-    // just sample data but from api server
-    const { data: { error, loading } } = this.props;
-    if (error) {
-      // todo Render error template
-      // eslint-disable-next-line no-console
-      console.error(error);
-      return null;
-    }
-    // todo Render loading template in else
-    return (loading ? Loading() : template(this));
+// eslint-disable-next-line no-console
+    console.log('this.props : ', this.props);
+    return (template(this));
   }
 }
 
-// binding graphQL query to Home , sample home query
-const QuizQuery = gql`query Home{ home {
-  id,title
-}}`;
+// binding graphQL mutations to Quiz
+const QuizQuery = gql`
+  mutation getDimension($dimensionId: Int!) {
+    getDimension(dimensionId: $dimensionId) {
+      id
+      name
+      answers
+    }
+  }
+`;
 
 Quiz.propTypes = {
-  data: apolloPropTypes(QuizQuery).isRequired,
+  getDimension: PropTypes.func.isRequired,
 };
 
-export default graphql(QuizQuery)(Quiz);
+Quiz.defaultProps = {
+  loading: true,
+};
+
+export default graphql(QuizQuery, { name: 'getDimension' })(Quiz);

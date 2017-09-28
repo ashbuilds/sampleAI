@@ -1,7 +1,7 @@
 @import '../main.less';
 
-:local{
-  .home{
+:local {
+  .home {
     background: @baseColor;
     .button_wrapper {
       font-size: 24px;
@@ -12,6 +12,7 @@
       transform: translate(-50%, -50%);
       & > span {
         color: @baseText;
+        margin-right: 0.3em;
         .transition(color 300ms ease-in);
         &:hover {
           color: @baseText !important;
@@ -23,25 +24,30 @@
         }
       }
     }
-    .button{
+    .button {
+      display: inline-block;
       background-color: transparent;
       font-size: 24px;
       font-weight: 200;
-      color: fade(@baseText,60%);
-      border-radius: 3px;
-      .transition(color 300ms ease-in);
-      &:hover{
-        color: @baseText;
+      &>a {
+        text-decoration: none;
+        color: fade(@baseText, 60%);
+        .transition(color 300ms ease-in);
       }
-      &>span{
-        &:after{
-          content: '';
-          width: 100%;
-          height:1px;
-          background-color: @primaryColor;
-          display: block;
+      &:hover {
+        & > a {
+          color: @baseText;
         }
       }
+
+      &:after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: @primaryColor;
+        display: block;
+      }
+
     }
   }
 }

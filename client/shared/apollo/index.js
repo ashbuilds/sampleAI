@@ -7,7 +7,6 @@ const apolloClient = (function () {
   let client = {};
   return {
     init(initialState = {}) {
-      console.log('url.server : ', url.server);
       const networkInterface = createNetworkInterface({
         uri: url.server,
       });
