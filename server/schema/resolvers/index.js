@@ -6,6 +6,7 @@ const Queries = {
   Query: {
     home: home.query,
   },
+  Mutation: Object.assign({}, ...[quiz.mutations, users.mutations]),
 };
 
 // Combining all resolver/query as we are working on modules

@@ -13,6 +13,7 @@ const typeDefs = `
 # Entry points into our API
 type Mutation {
    getDimension(dimensionId: Int!):Dimension
+   getAnswers(dimensionId1: Int!,dimensionId2: Int!):[DimensionAnswer]
    setUser(name: String!,email: String!):Login
    getUser(email: String!):Login
 }
